@@ -1,0 +1,73 @@
+<p id="notice"><%= notice %></p>
+<h2>Doctor information</h2>
+<p>
+  <strong>First name:</strong>
+  <%= @doctor.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @doctor.last_name %>
+</p>
+
+<p>
+  <strong>License no:</strong>
+  <%= @doctor.license_no %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @doctor.email %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @doctor.phone_number %>
+</p>
+
+<br>
+<br>
+<table class="table table-bordered table-hover">
+
+  <thead>
+
+    
+ 
+  <tr>    
+<th  colspan="5"> patients for <%= @doctor.first_name%></th>
+</tr>
+<tr>
+ <th>First name</th>
+ <th>Last name</th>
+ <th>Email</th>
+ <th>Phone number</th>
+ <th>State</th>
+    </tr>  
+</thead>
+     
+ <tbody>
+
+
+      <% @doctor.patients.each do |patient| %>
+<tr>
+<td><%= patient.first_name%></td>
+
+<td> <%= patient.last_name%></td>
+
+<td><%= patient.email%></td>
+
+<td><%= patient.phone_number%></td>
+
+<td><%= patient.state%></td>
+
+<% end %>
+
+
+</tr>
+
+</tbody>
+
+</table>
+
+<%= link_to 'Edit', edit_doctor_path(@doctor),class:"btn btn-primary" %> |
+<%= link_to 'Back', doctors_path,class:"btn btn-primary" %>

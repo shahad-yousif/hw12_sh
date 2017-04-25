@@ -1,0 +1,58 @@
+<%= form_for(@patient) do |f| %>
+  <% if @patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% @patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="col-md-8">
+  <div class="field">
+    <div class="form-group">
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name, class:"form-control" %>
+  </div>
+  </div>
+  <div class="field">
+    <div class="form-group">
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name, class:"form-control" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="form-group">
+    <%= f.label :email %><br>
+    <%= f.text_field :email, class:"form-control" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="form-group">
+    <%= f.label :phone_number %><br>
+    <%= f.text_field :phone_number, class:"form-control" %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="form-group">
+    <%= f.label :state %><br>
+     <%= f.check_box :state %>
+    </div>
+  </div>
+  <div class="field">
+    <div class="form-group">
+    <%= f.label :doctor_id %><br>
+    <%= f.collection_select :doctor_id, Doctor.order(:first_name),:id,:first_name  %>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit"create patient", class:"btn btn-primary" %>
+    <br>
+    <br>
+   <%= link_to 'Show', @patient, class:"btn btn-primary" %> |
+<%= link_to 'Back', patients_path, class:"btn btn-primary" %>
+  </div>
+  </div>
+<% end %>
