@@ -5,7 +5,7 @@ class Doctor < ActiveRecord::Base
     validates :last_name, length: { minimum: 2 }
     validates :first_name, length: { maximum: 10 }
     validates :last_name, length: { maximum: 10 }
-    validates_presence_of :license_no, scope:  [:first_name, :last_name]
+    validates_uniqueness_of :license_no, scope:  [:first_name, :last_name]
     validates_uniqueness_of :license_no, :case_sensitive => false
     validates_uniqueness_of :email, :case_sensitive => false
     validates_format_of :email, :with => /\A([^@\s]+)@((gmail)\.+com)\Z/i, :on => :create,:message =>"must be in @gmail.com"
